@@ -1,0 +1,134 @@
+:root {
+    --kolor-tekstu: #333;
+    --kolor-fokusu: #d32f2f;
+    --kolor-tla: #ffffff;
+    --kolor-karty: #ffffff;
+    --kolor-obramowania: #ccc;
+}
+[data-theme="dark"] {
+    --kolor-tekstu: #f0f0f0;
+    --kolor-fokusu: #ff5252;
+    --kolor-tla: #121212;
+    --kolor-karty: #1e1e1e;
+    --kolor-obramowania: #444;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--kolor-tekstu);
+    background-color: var(--kolor-tla);
+}
+a {
+    color: var(--kolor-tekstu);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--kolor-tekstu);
+}
+header, nav, main, footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px;
+}
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+}
+.produkty {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.karta {
+    border: 1px solid var(--kolor-obramowania);
+    padding: 15px;
+    background-color: var(--kolor-karty);
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+table, th, td {
+    border: 1px solid var(--kolor-obramowania);
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: var(--kolor-karty);
+    color: var(--kolor-tekstu);
+    border: 1px solid var(--kolor-obramowania);
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+a:hover, button:hover {
+    opacity: 0.7;
+}
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--kolor-fokusu);
+    outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+    .produkty {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+#sekcja-zegara {
+    max-width: 1100px;
+    margin: 20px auto 0 auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--kolor-karty);
+    border: 1px solid var(--kolor-obramowania);
+    border-radius: 8px;
+}
+
+#sekcja-zegara p {
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    #sekcja-zegara {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+#sekcja-wyszukiwania {
+    font-weight: bold;
+    max-width: 1100px;
+    margin: 15px auto 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#sekcja-wyszukiwania input {
+    max-width: 400px;
+}
+
+#licznik {
+    margin: 5px 0;
+}
+
+[hidden] {
+    display: none !important;
+}

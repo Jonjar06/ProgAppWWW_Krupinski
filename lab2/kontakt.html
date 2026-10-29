@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep z ciężarami - Kontakt</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+<header>
+<h1>Kontakt</h1>
+    <button type="button" id="theme-toggle" aria-pressed="false">Tryb ciemny</button>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Katalog produktów</a></li>
+        <li><a href="produkt.html">Produkt</a></li>
+        <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+    </ul>
+</nav>
+
+<main>
+    <p>Podgląd lokalny. Formularz nie wysyła wiadomości.</p>
+    <form method="get" action="kontakt.html">
+
+        <div>
+            <label for="email">Adres e-mail (wymagane):</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="produkt">Wybierz produkt (wymagane):</label>
+            <select id="produkt" name="produkt" required>
+                <option value="">Wybierz produkt</option>
+                <option value="talerz-10kg">Stalowy talerz do sztangi 10kg</option>
+                <option value="talerz-15kg">Stalowy talerz do sztangi 15kg</option>
+                <option value="talerz-20kg">Stalowy talerz do sztangi 20kg</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="ilosc">Liczba sztuk (1-5, wymagane):</label>
+            <input type="number" id="ilosc" name="ilosc" required min="1" max="5" step="1">
+        </div>
+
+        <div>
+            <label for="wiadomosc">Wiadomość (od 10 do 500 znaków, wymagane):</label>
+            <textarea id="wiadomosc" name="wiadomosc" required minlength="10" maxlength="500"></textarea>
+        </div>
+        <div>
+            <button type="submit">Sprawdź zapytanie</button>
+        </div>
+
+    </form>
+    <p id="blad-wiadomosc" style="color: red; font-weight: bold;"></p>
+    <div id="podsumowanie" aria-live="polite"></div>
+</main>
+
+<footer>
+    Sklep z ciężarami 2026
+</footer>
+</body>
+</html>

@@ -93,3 +93,25 @@ $('#sekcja-demonstracyjna #btn-reset').on('click', function() {
     krokiC = 0;
     $('#sekcja-demonstracyjna #kroki-c').text('0');
 });
+$('#sekcja-demonstracyjna #btn-ajax').on('click', function() {
+    const $btn = $(this);
+    const $wynik = $('#sekcja-demonstracyjna #wynik-ajax');
+
+    $btn.prop('disabled', true);
+    $wynik.text('Ładowanie...');
+    $.ajax({
+        url: 'status.php',
+        type: 'GET',
+        dataType: 'text',
+        timeout: 5000
+    })
+        .done(function(odpowiedz) {
+            $wynik.text(odpowiedz);
+        })
+        .fail(function() {
+            $wynik.text('Wystąpił błąd podczas łączenia z serwerem');
+        })
+        .always(function() {
+            $btn.prop('disabled', false);
+        });
+});

@@ -1,3 +1,7 @@
+## Instrukcja uruchomienia
+Aby uruchomić stronę należy pobrać folder `lab3`, rozpakować go i otworzyć plik `index.html`. Można też uruchomić serwer poleceniem `py -m http.server 8000`, a następnie wejść w przeglądarce na `http://localhost:8000/`. Można również uruchomić Apache, po rozpakowaniu przenieść katalog `lab3` do `htdocs` w katalogu instalacji XAMPP i otworzyć `http://localhost/lab3/`.
+## Wersja jQuery
+jQuery 4.0.0
 ## Pseudokody animacji 
 
 ### Animacja A 
@@ -64,3 +68,21 @@ ruchu wyłącza przejścia, zachowując funkcje.
 **Tryb ciemny, zegar, formularz**
 
 Przycisk `Tryb ciemny` działa poprawnie wyświetlając czarny motyw strony po naciśnięciu oraz zapamiętując obecny tryb po odświeżeniu strony. **Zegar** poprawnie wyświetla aktualną godzinę wraz z minutami i sekundami, po naciśnięciu `Stop zegara` zatrzymuje się, a po naciśnięciu `Start zegara` pokazuje aktualny czas. **Formularz** działa zgodnie z założeniami.
+
+### Testy AJAX
+
+ **Metoda GET, kod 200 i odpowiedź**
+  - **kroki**: otwarcie DevTools, zakładka Network, kliknięcie przycisku `Sprawdź serwer`
+ - **wynik oczekiwany**: żądanie do `status.php` ma metodę GET, status 200 i zwraca tekst "PHP działa"
+ - **wynik rzeczywisty**: w zakładce Network widoczna jest metoda `GET`, kod statusu `200 OK`, a w zakładce Response widnieje napis "PHP działa"
+
+**Symulacja błędu 404**
+ - **kroki**: tymczasowa zmiana nazwy pliku `status.php`, kliknięcie przycisku `Sprawdź serwer`, przywrócenie poprawnej nazwy pliku i ponowna próba
+ - **wynik oczekiwany**: wystąpienie błędu 404, wyświetlenie komunikatu o błędzie na stronie, po przywróceniu pliku żądanie kończy się sukcesem
+ - **wynik rzeczywisty**: przy zmienionej nazwie pliku w Network pojawił się błąd `404 Not Found`, a na stronie komunikat o błędzie, po przywróceniu nazwy `status.php` żądanie ponownie zwróciło kod 200 i tekst "PHP działa"
+
+**Ładowanie przy ograniczonej prędkości sieci**
+ - **kroki**: ustawienie w DevTools (zakładka Network) profilu prędkości na `Slow 3G`, kliknięcie przycisku `Sprawdź serwer`
+ - **wynik oczekiwany**: ze względu na wolniejsze łącze, stan ładowania (komunikat "Ładowanie..." i zablokowany przycisk) utrzymuje się dłużej przed wyświetleniem odpowiedzi
+ - **wynik rzeczywisty**: po włączeniu opcji Slow 3G napis "Ładowanie..." był widoczny na ekranie przez kilka sekund, po czym pojawił się właściwy wynik
+

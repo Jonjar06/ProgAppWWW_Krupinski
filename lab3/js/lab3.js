@@ -55,3 +55,41 @@ $('#sekcja-demonstracyjna #btn-b').on({
         aktualizujB();
     }
 });
+let krokiC = 0;
+
+$('#sekcja-demonstracyjna #btn-c').on('click', function() {
+    if ($(this).is(":animated")) {
+        return;
+    }
+    if (krokiC >= 5) {
+        return;
+    }
+    krokiC++;
+    const nowaSzerokosc = 160 + (krokiC * 20);
+    const nowaWysokosc = 90 + (krokiC * 10);
+    $(this).animate({
+        width: nowaSzerokosc + 'px',
+        height: nowaWysokosc + 'px'
+    }, 300);
+
+    $('#sekcja-demonstracyjna #kroki-c').text(krokiC);
+});
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (prefersReducedMotion.matches) {
+    $.fx.off = true;
+}
+
+$('#sekcja-demonstracyjna #btn-reset').on('click', function() {
+    $('#sekcja-demonstracyjna #btn-a')
+        .stop(true, false)
+        .css({ width: '160px', height: '90px' })
+        .attr('aria-pressed', 'false');
+    powiekszonyA = false;
+
+    $('#sekcja-demonstracyjna #btn-c')
+        .stop(true, false)
+        .css({ width: '160px', height: '90px' });
+    krokiC = 0;
+    $('#sekcja-demonstracyjna #kroki-c').text('0');
+});

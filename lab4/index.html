@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep z ciężarami</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/lab3.js" defer></script>
+</head>
+<body>
+<header>
+    <h1>Sklep z ciężarami</h1>
+    <button type="button" id="theme-toggle" aria-pressed="false">Tryb ciemny</button>
+
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html" aria-current="page">Katalog produktów</a></li>
+        <li><a href="lab4.php">Katalog PHP</a></li>
+        <li><a href="html/produkt.html">Produkt</a></li>
+        <li><a href="html/kontakt.html">Kontakt</a></li>
+    </ul>
+
+</nav>
+<section id="sekcja-zegara">
+    <div>
+        <p>Data: <strong id="data-zegar"></strong></p>
+        <p>Czas: <strong id="czas-zegar"></strong></p>
+    </div>
+    <div>
+        <button type="button" id="btn-start">Start zegara</button>
+        <button type="button" id="btn-stop">Stop zegara</button>
+    </div>
+</section>
+<section id="sekcja-wyszukiwania">
+    <label for="szukaj">Szukaj produktu:</label>
+    <input type="search" id="szukaj" placeholder="Wpisz nazwę (np. 15kg)">
+    <p id="licznik" aria-live="polite">Znaleziono: 3</p>
+</section>
+<main class="produkty">
+
+    <article class="karta">
+        <h2><a href="html/produkt.html">Stalowy talerz do sztangi 10kg</a></h2>
+        <a href="html/produkt.html"><img src="img/10kgtalerz.jpg" alt="zielony 10kg talerz" width="400" height="400">
+        <p>Precyzyjnie skalibrowany stalowy olimpijski talerz o wadze 10kg</p>
+        <p>Cena: 200 zł</p></a>
+    </article>
+    <article class="karta">
+        <h2>Stalowy talerz do sztangi 15kg</h2>
+        <img src="img/15kgtalerz.jpg" alt="zolty 15kg talerz" width="400" height="400">
+        <p>Precyzyjnie skalibrowany stalowy olimpijski talerz o wadze 15kg</p>
+        <p>Cena: 300 zł</p>
+    </article>
+    <article class="karta">
+        <h2>Stalowy talerz do sztangi 20kg</h2>
+        <img src="img/20kgtalerz.jpg" alt="niebieski 20kg talerz" width="400" height="400">
+        <p>Precyzyjnie skalibrowany stalowy olimpijski talerz o wadze 20kg</p>
+        <p>Cena: 400 zł</p>
+    </article>
+    <section id="sekcja-demonstracyjna">
+        <h2>Sekcja demonstracyjna</h2>
+
+        <div id="przyciski-animacji">
+            <button type="button" id="btn-a" class="animacja-box" aria-pressed="false">Animacja A</button>
+            <button type="button" id="btn-b" class="animacja-box">Animacja B</button>
+            <button type="button" id="btn-c" class="animacja-box">Animacja C</button>
+        </div>
+        <p>Liczba kroków C: <strong id="kroki-c" role="status">0</strong></p>
+        <button type="button" id="btn-reset">Resetuj A i C</button>
+        <hr>
+        <button type="button" id="btn-ajax">Sprawdź serwer</button>
+        <p id="wynik-ajax" role="status"></p>
+    </section>
+</main>
+
+<footer>
+    Sklep z ciężarami 2026
+</footer>
+</body>
+</html>

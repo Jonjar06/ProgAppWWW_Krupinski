@@ -1,7 +1,4 @@
 <?php
-require_once __DIR__ . '/cfg.php';
-require_once __DIR__ . '/showpage.php';
-
 $idProjektu = "sklep-z-ciezarami";
 
 $idp = $_GET['idp'] ?? 'glowna';
@@ -12,25 +9,38 @@ if ($idp === '') {
 $blad = false;
 $kodHttp = 200;
 $widok = null;
+$menu = [];
+$tytul = "Katalog produktów";
 
-if (is_array($idp) || !preg_match('/^[a-z0-9-]{1,20}$/', $idp)) {
-    $kodHttp = 404;
-    $blad = "404 Not Found, nieprawidłowy format adresu.";
-} else {
-    $widok = PokazPodstrone($pdo, $idp);
+try {
+    require_once __DIR__ . '/cfg.php';
+    require_once __DIR__ . '/showpage.php';
 
-    if ($widok === null) {
+    if (is_array($idp) || !preg_match('/^[a-z0-9-]{1,20}$/', $idp)) {
         $kodHttp = 404;
-        $blad = "404 Not Found, nie znaleziono podstrony.";
+        $blad = "404 Not Found, nieprawidłowy format adresu";
+    } else {
+        $widok = PokazPodstrone($pdo, $idp);
+        if ($widok === null) {
+            $kodHttp = 404;
+            $blad = "404 Not Found, nie znaleziono podstrony";
+        }
     }
+
+    if (!$blad) {
+        $tytul = $widok['page_title'];
+    }
+
+    $stmtMenu = $pdo->query("SELECT alias, page_title FROM page_list WHERE status = 1 ORDER BY id");
+    $menu = $stmtMenu->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (Exception $e) {
+    $kodHttp = 500;
+    $blad = "500 Internal Server Error, wystąpił tymczasowy problem z bazą danych";
+    $tytul = "Błąd serwera";
 }
 
 http_response_code($kodHttp);
-
-$tytul = $blad ? "Błąd" : $widok['page_title'];
-
-$stmtMenu = $pdo->query("SELECT alias, page_title FROM page_list WHERE status = 1 ORDER BY id");
-$menu = $stmtMenu->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pl">

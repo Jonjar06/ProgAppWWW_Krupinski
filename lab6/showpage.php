@@ -6,6 +6,7 @@ function PokazPodstrone($pdo, $alias) {
         $rekord = $stmt->fetch(PDO::FETCH_ASSOC);
         return $rekord ? $rekord : null;
     } catch (PDOException $e) {
+        error_log("Błąd zapytania w PokazPodstrone: " . $e->getMessage());
         throw new Exception("Błąd bazy danych.");
     }
 }
